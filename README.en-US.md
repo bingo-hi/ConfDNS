@@ -68,5 +68,8 @@ go build -o dnsclient ./cmd/dnsclient
 
 ### On Linux
 
+## Source Licence
+MIT
+
 ## Contact
 Email: mjsornp@gmail.com

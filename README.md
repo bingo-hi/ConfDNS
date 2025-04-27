@@ -64,5 +64,8 @@ go build -o dnsclient ./cmd/dnsclient
 
 ### Linux下服务
 
+## 开源许可
+MIT
+
 ## 联系作者
 邮箱：mjsornp@gmail.com
