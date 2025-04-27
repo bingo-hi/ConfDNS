@@ -31,14 +31,14 @@
 ```bash
 cd build
 # build both Windows and Linux binaries
-./build.bat all
+./build.bat
 ```
 
 #### Linux开发环境
 ```bash
 cd build
 ### 一键生成windows和linux下的服务
-./build.sh all
+./build.sh
 ```
 
 ### 2. 分步骤编译
@@ -110,8 +110,8 @@ sc start ConfDNS
 ## DNS缓存
 开启ConfDNS后， 若没有立即生效， 有可能是操作系统DNS缓存的原因，清理一下dns缓存过几分钟即可生效。
 
-## 开源许可
+# 开源许可
 MIT
 
-## 联系作者
+# 联系作者
 邮箱：mjsornp@gmail.com

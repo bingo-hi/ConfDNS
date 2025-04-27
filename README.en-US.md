@@ -35,14 +35,14 @@ You can either run the one-click scripts in the `build` folder or build step by 
 ```bash
 cd build
 # build both Windows and Linux binaries
-./build.bat all
+./build.bat
 ```
 
 #### Linux
 ```bash
 cd build
 ### one click to generate service
-./build.sh all
+./build.sh
 ```
 
 ### 2. Step-by-step
@@ -111,8 +111,8 @@ sc start ConfDNS
 ## DNS Cache
 After enabling ConfDNS, if it does not take effect immediately, it may be due to the operating system's DNS cache. Clearing the DNS cache and waiting a few minutes should resolve the issue.
 
-## Source Licence
+# Source Licence
 MIT
 
-## Contact
+# Contact
 Email: mjsornp@gmail.com
