@@ -5,6 +5,7 @@ go 1.24.1
 require (
 	github.com/miekg/dns v1.1.65
 	github.com/sirupsen/logrus v1.9.3
+	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 	gopkg.in/yaml.v2 v2.4.0
 )
 

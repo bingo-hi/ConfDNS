@@ -1,54 +1,71 @@
 package logger
 
 import (
-	"os"
+	"confdns/internal/config"
 
 	"github.com/sirupsen/logrus"
+	"gopkg.in/natefinch/lumberjack.v2"
 )
 
 var log = logrus.New()
 
-func InitLogger(filepath string, level string) {
-	file, err := os.OpenFile(filepath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
-	if err == nil {
-		log.SetOutput(file)
-	} else {
-		// 如果文件打开失败，仍输出到控制台
-		log.Warn("无法打开日志文件，使用默认输出")
+// InitLoggerWithConfig initializes the logging system (supports advanced configurations)
+func InitLoggerWithConfig(cfg config.LogConfig) {
+	// If no log path is set, the default will be used
+	if cfg.FilePath == "" {
+		cfg.FilePath = "dns.log"
 	}
+
+	// Default value set
+	if cfg.MaxSizeMB == 0 {
+		cfg.MaxSizeMB = 10 // Default is 10MB
+	}
+	if cfg.MaxAgeDays == 0 {
+		cfg.MaxAgeDays = 7 // Default is 7 days
+	}
+	if cfg.MaxBackups == 0 {
+		cfg.MaxBackups = 5 // Default keeps a maximum of 5 logs
+	}
+
+	// Set Lumberjack for log rotation
+	log.SetOutput(&lumberjack.Logger{
+		Filename:   cfg.FilePath,
+		MaxSize:    cfg.MaxSizeMB,
+		MaxBackups: cfg.MaxBackups,
+		MaxAge:     cfg.MaxAgeDays,
+		Compress:   cfg.Compress,
+	})
 
 	log.SetFormatter(&logrus.TextFormatter{
 		FullTimestamp: true,
 	})
 
-	parsedLevel, err := logrus.ParseLevel(level)
+	// Set log level
+	parsedLevel, err := logrus.ParseLevel(cfg.Level)
 	if err != nil {
+		log.Warn("If log level parsing fails, the default is Info")
 		parsedLevel = logrus.InfoLevel
 	}
 	log.SetLevel(parsedLevel)
 }
 
-// LogDebugf 输出 Debug 级别日志
+// The following are functions for outputting logs at various levels
 func LogDebugf(format string, args ...interface{}) {
 	log.Debugf(format, args...)
 }
 
-// LogInfof 输出 Info 级别日志
 func LogInfof(format string, args ...interface{}) {
 	log.Infof(format, args...)
 }
 
-// LogWarnf 输出 Warning 级别日志
 func LogWarnf(format string, args ...interface{}) {
 	log.Warnf(format, args...)
 }
 
-// LogErrorf 输出 Error 级别日志
 func LogErrorf(format string, args ...interface{}) {
 	log.Errorf(format, args...)
 }
 
-// LogFatalf 输出 Fatal 级别日志并退出
 func LogFatalf(format string, args ...interface{}) {
 	log.Fatalf(format, args...)
 }

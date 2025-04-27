@@ -1,14 +1,22 @@
-listen: "127.0.0.1:53"
-upstream_dns: "8.8.8.8:53"
-block_list:
-  - "ads.example.com"
-  - "tracker.example.org"
-use_doh: true
-doh_url: "https://8.222.242.18:8443/dns-query"
-doh_requests:
-  - "google.com"
-  - "youtube.com"
-  - "facebook.com"
-  - "reddit.com"
-log_file: "dns.log"
-log_level: "info"
+dns_config:
+  listen: "127.0.0.1:53"
+  upstream_dns: "114.114.114.114:53"
+  block_list:
+    - "ads.example.com"
+    - "tracker.example.org"
+  # 以下doh_url地址为本项目搭建在阿里云上的加密安全的doh，用于测试。使用加密的doh，不会被运营商劫持, 从而得到正确的IP. 若有疑问，可咨询: mjsornp@gmail.com
+  doh_url: "https://8.222.242.18:8443/dns-query"
+  # 若没有设置use_doh为true, 以下网址走doh, 其它走upstream_dns
+  doh_requests:
+    - "google.com"
+    - "youtube.com"
+    - "facebook.com"
+    - "reddit.com"
+
+log_config:
+  filePath: "dns.log"
+  level: "debug"
+  maxSizeMB: 10
+  maxBackups: 5
+  maxAgeDays: 3
+  compress: true

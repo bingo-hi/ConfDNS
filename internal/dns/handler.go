@@ -9,7 +9,7 @@ import (
 	"github.com/miekg/dns"
 )
 
-func handleDNSRequest(w dns.ResponseWriter, r *dns.Msg, cfg *config.Config) {
+func handleDNSRequest(w dns.ResponseWriter, r *dns.Msg, cfg *config.DNSConfig) {
 	if len(r.Question) == 0 {
 		logger.LogErrorf("Received empty DNS question")
 		dns.HandleFailed(w, r)

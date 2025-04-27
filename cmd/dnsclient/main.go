@@ -4,10 +4,15 @@ import (
 	"confdns/internal/config"
 	"confdns/internal/dns"
 	"confdns/internal/logger"
+	"fmt"
 )
 
 func main() {
-	cfg := config.LoadConfig("config/config.yaml")
-	logger.InitLogger(cfg.LogFile, cfg.LogLevel)
-	dns.StartServer(cfg)
+	appCfg, err := config.LoadAppConfigFromYAML("config/config.yaml")
+	if err != nil {
+		fmt.Println("load config failed:", err)
+	}
+
+	logger.InitLoggerWithConfig(appCfg.LogConfig)
+	dns.StartServer(appCfg.DNSConfig)
 }
