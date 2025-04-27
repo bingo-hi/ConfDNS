@@ -64,6 +64,9 @@ go build -o dnsclient ./cmd/dnsclient
 
 ### Linux下服务
 
+## DNS缓存
+开启ConfDNS后， 若没有立即生效， 有可能是操作系统DNS缓存的原因，清理一下dns缓存过几分钟即可生效。
+
 ## 开源许可
 MIT
 

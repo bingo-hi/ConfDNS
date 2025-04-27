@@ -68,6 +68,9 @@ go build -o dnsclient ./cmd/dnsclient
 
 ### On Linux
 
+## DNS Cache
+After enabling ConfDNS, if it does not take effect immediately, it may be due to the operating system's DNS cache. Clearing the DNS cache and waiting a few minutes should resolve the issue.
+
 ## Source Licence
 MIT
 

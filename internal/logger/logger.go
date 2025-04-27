@@ -10,7 +10,7 @@ import (
 var log = logrus.New()
 
 // InitLoggerWithConfig initializes the logging system (supports advanced configurations)
-func InitLoggerWithConfig(cfg config.LogConfig) {
+func InitLoggerWithConfig(cfg *config.LogConfig) {
 	// If no log path is set, the default will be used
 	if cfg.FilePath == "" {
 		cfg.FilePath = "dns.log"

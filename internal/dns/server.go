@@ -7,7 +7,7 @@ import (
 	"github.com/miekg/dns"
 )
 
-func StartServer(cfg config.DNSConfig) {
+func StartServer(cfg *config.DNSConfig) {
 	dns.HandleFunc(".", func(w dns.ResponseWriter, r *dns.Msg) {
 		handleDNSRequest(w, r, cfg)
 	})

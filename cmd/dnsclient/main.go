@@ -13,6 +13,6 @@ func main() {
 		fmt.Println("load config failed:", err)
 	}
 
-	logger.InitLoggerWithConfig(appCfg.LogConfig)
-	dns.StartServer(appCfg.DNSConfig)
+	logger.InitLoggerWithConfig(&appCfg.LogConfig)
+	dns.StartServer(&appCfg.DNSConfig)
 }
