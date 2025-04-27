@@ -5,6 +5,7 @@ Please select the language version you need:
 - 🇺🇸 [English](README.en-US.md)
 
 # Configurable DNS Client
+download：https://github.com/bingo-hi/ConfDNS/releases
 
 ## Features
 - Fully configurable local DNS using simple YAML syntax.

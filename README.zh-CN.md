@@ -5,6 +5,7 @@
 - 🇺🇸 [English](README.en-US.md)
 
 # 可配置的DNS
+下载使用：https://github.com/bingo-hi/ConfDNS/releases
 
 ## 功能特色
  - 自由配置本地DNS，使用yaml语法，配置简单。
