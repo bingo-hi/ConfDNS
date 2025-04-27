@@ -1,0 +1,14 @@
+listen: "127.0.0.1:53"
+upstream_dns: "8.8.8.8:53"
+block_list:
+  - "ads.example.com"
+  - "tracker.example.org"
+use_doh: true
+doh_url: "https://8.222.242.18:8443/dns-query"
+doh_requests:
+  - "google.com"
+  - "youtube.com"
+  - "facebook.com"
+  - "reddit.com"
+log_file: "dns.log"
+log_level: "info"
