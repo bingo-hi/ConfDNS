@@ -64,9 +64,49 @@ go build -o dnsclient ./cmd/dnsclient
 ```
 
 ## Run
-### On Windows
+> Running requires **administrator privileges**.
 
-### On Linux
+For testing purposes, you can run it via the command line, for example:
+```bash
+./dnsclient
+```
+
+### How to configure the service in production environment
+
+#### How to configure the service on Linux
+> Example for Ubuntu 20.04, [sample template](config/confdns.service) located at `config/confdns.service`
+
+1. With administrator privileges, edit `confdns.service` in the `/etc/systemd/system` directory, and make sure `ExecStart` and `WorkingDirectory` point to the path where the `dnsclient` executable file is stored on the server.
+2. Set the service to start on boot:
+```bash
+systemctl enable confdns.service
+```
+3. Start the service:
+```bash
+systemctl start confdns.service
+```
+
+#### How to configure the service on Windows
+> Example for Windows 10. This project uses a custom service method to configure and manage the DNS service on Windows.
+
+1. Generate the service executable (or use the script in the `build` directory to generate it with one click):
+```bash
+go env -w GOOS=windows
+go build -o ConfDnsService.exe ./cmd/winservice
+```
+2. Install the service (requires command-line privileges to open the window):
+```bash
+ConfDnsService.exe /install
+```
+3. Check the service status:
+```bash
+sc query ConfDNS
+```
+4. Start the service:
+```bash
+sc start ConfDNS
+```
+5. Change the "Preferred DNS server" in the network adapter to: `127.0.0.1`
 
 ## DNS Cache
 After enabling ConfDNS, if it does not take effect immediately, it may be due to the operating system's DNS cache. Clearing the DNS cache and waiting a few minutes should resolve the issue.

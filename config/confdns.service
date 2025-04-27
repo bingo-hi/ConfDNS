@@ -1,0 +1,14 @@
+[Unit]
+Description=ConfDNS Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/builder/network/dnsclient
+WorkingDirectory=/home/builder/network
+Restart=always
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target

@@ -3,6 +3,7 @@ module confdns
 go 1.24.1
 
 require (
+	github.com/kardianos/service v1.2.2
 	github.com/miekg/dns v1.1.65
 	github.com/sirupsen/logrus v1.9.3
 	gopkg.in/natefinch/lumberjack.v2 v2.2.1
