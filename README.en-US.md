@@ -41,7 +41,7 @@ cd build
 #### Linux
 ```bash
 cd build
-### 一键生成windows和linux下的服务
+### one click to generate service
 ./build.sh all
 ```
 
