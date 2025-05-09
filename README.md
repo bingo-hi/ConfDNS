@@ -1,8 +1,8 @@
 <!-- README.zh-CN.md -->
 请选择你需要的语言版本：
 
-- 🇨🇳 [中文版](README.zh-CN.md)
-- 🇺🇸 [English](README.en-US.md)
+- 🇨🇳 [中文版](README.md)
+- 🇺🇸 [English](README_en.md)
 
 # 可配置的DNS
 下载使用：https://github.com/bingo-hi/ConfDNS/releases

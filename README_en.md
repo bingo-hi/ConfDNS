@@ -1,8 +1,8 @@
 <!-- README.en-US.md -->
 Please select the language version you need:
 
-- 🇨🇳 [中文版](README.zh-CN.md)
-- 🇺🇸 [English](README.en-US.md)
+- 🇨🇳 [中文版](README.md)
+- 🇺🇸 [English](README_en.md)
 
 # Configurable DNS Client
 download：https://github.com/bingo-hi/ConfDNS/releases
