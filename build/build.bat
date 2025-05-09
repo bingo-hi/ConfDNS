@@ -15,8 +15,9 @@ mkdir "%WINDOWS_DIR%"
 REM Compile for Linux
 echo Compiling for Linux...
 REM Set GOOS to linux and build the Linux executable
+set CGO_ENABLED=0
 go env -w GOOS=linux
-go build -o "%LINUX_DIR%\dnsclient" "%PROJECT_DIR%\cmd\dnsclient"
+go build -ldflags="-s -w -extldflags '-static'" -o "%LINUX_DIR%\dnsclient" "%PROJECT_DIR%\cmd\dnsclient"
 
 REM Copy the config and README files to the Linux output folder
 xcopy /E /I "%PROJECT_DIR%\config" "%LINUX_DIR%\config"
@@ -30,8 +31,9 @@ copy /Y "%PROJECT_DIR%\LICENSE" "%LINUX_DIR%"
 REM Compile for Windows
 echo Compiling for Windows...
 REM Set GOOS to windows and build the Windows executable
+set CGO_ENABLED=0
 go env -w GOOS=windows
-go build -o "%WINDOWS_DIR%\dnsclient.exe" "%PROJECT_DIR%\cmd\dnsclient"
+go build -ldflags="-s -w -extldflags '-static'" -o "%WINDOWS_DIR%\dnsclient.exe" "%PROJECT_DIR%\cmd\dnsclient"
 
 REM Copy the config and README files to the Windows output folder
 xcopy /E /I "%PROJECT_DIR%\config" "%WINDOWS_DIR%\config"

@@ -18,7 +18,7 @@ mkdir -p "$LINUX_DIR" "$WINDOWS_DIR"
 echo "Compiling for Linux..."
 # Set GOOS to linux and build the Linux executable
 go env -w GOOS=linux
-go build -o "$LINUX_DIR/dnsclient" "$PROJECT_DIR/cmd/dnsclient"
+CGO_ENABLED=0 go build -ldflags="-s -w -extldflags '-static'" -o "$LINUX_DIR/dnsclient" "$PROJECT_DIR/cmd/dnsclient"
 
 # Copy the config and README files to the Linux output folder
 cp -r "${PROJECT_DIR}/config" "$LINUX_DIR"
@@ -33,7 +33,7 @@ cp -f "${PROJECT_DIR}/LICENSE" "$LINUX_DIR"
 echo "Compiling for Windows..."
 # Set GOOS to windows and build the Windows executable
 go env -w GOOS=windows
-go build -o "$WINDOWS_DIR/dnsclient.exe" "$PROJECT_DIR/cmd/dnsclient"
+CGO_ENABLED=0 go build -ldflags="-s -w -extldflags '-static'" -o "$WINDOWS_DIR/dnsclient.exe" "$PROJECT_DIR/cmd/dnsclient"
 
 # Copy the config and README files to the Windows output folder
 cp -r "${PROJECT_DIR}/config" "$WINDOWS_DIR"
